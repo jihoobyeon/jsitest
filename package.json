@@ -1,17 +1,16 @@
 {
   "name": "jsitest",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"
   },
   "dependencies": {
     "react": "19.0.0",
-    "react-native": "0.78.2"
+    "react-native": "0.78.2",
+    "react-native-windows": "^0.78.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -35,5 +34,19 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "codegenConfig": {
+    "windows": {
+      "namespace": "jsiTestCodegen",
+      "outputDirectory": "windows/jsitest/codegen",
+      "separateDataTypes": true
+    }
+  },
+  "react-native-windows": {
+    "init-windows": {
+      "name": "jsitest",
+      "namespace": "jsitest",
+      "template": "cpp-lib"
+    }
   }
 }
