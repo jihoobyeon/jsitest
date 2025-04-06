@@ -13,20 +13,18 @@
 
 namespace winrt::jsitest
 {
+  REACT_MODULE(JsiTest)
+  struct JsiTest: std::enable_shared_from_this<JsiTest> {
+    using ModuleSpec = jsiTestCodegen::JsiTestSpec;
 
-REACT_MODULE(JsiTest)
-struct JsiTest
-{
-  using ModuleSpec = jsitestCodegen::JsiTestSpec;
+    REACT_INIT(Initialize)
+    void Initialize(React::ReactContext const &reactContext) noexcept;
 
-  REACT_INIT(Initialize)
-  void Initialize(React::ReactContext const &reactContext) noexcept;
+    REACT_METHOD(Test, L"test")
+    void Test(React::ReactPromise<void> const &result) noexcept;
 
-  REACT_METHOD(Test, L"test")
-  void Test(React::ReactPromise<bool> const &result) noexcept;
-
-private:
-  React::ReactContext m_context;
+  private:
+    React::ReactContext m_context;
 };
 
 } // namespace winrt::jsitest
